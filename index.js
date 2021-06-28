@@ -2,6 +2,9 @@ function Entity(name = 'default'){
   this.id = ID()
   this.name = name
 }
+Entity.prototype.__dangerouslySetID = function(id){
+  this.id = id
+}
 
 // Helpers
 function ID() {
