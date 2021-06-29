@@ -1,5 +1,6 @@
 const terminal = {
   $root: document.body,
+  debug: true,
   node: {
     root: document.createElement('form'),
     input: document.createElement('input'),
@@ -22,6 +23,12 @@ const terminal = {
       e.preventDefault();
 
       const { value } = this.node.input;
+
+      if(this.debug){
+        const log = document.createElement('p')
+        log.innerHTML = value
+        this.node.root.appendChild(log)
+      }
 
       this.handleInput(value.toLowerCase(), () => {
         this.node.input.value = "";
