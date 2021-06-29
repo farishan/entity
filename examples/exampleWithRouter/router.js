@@ -5,6 +5,8 @@ const router = {
   node: {},
   currentPath: "/",
 
+  onchange: null,
+
   init: function () {
     this.node.root = this.createElement();
     this.node.root.id = "router_root";
@@ -24,6 +26,10 @@ const router = {
   push: function (path) {
     this.currentPath = path;
     this.renderMeta();
+
+    if(this.onchange !== null){
+      this.onchange(this)
+    }
   },
 
   renderMeta: function () {
